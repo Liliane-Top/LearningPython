@@ -112,15 +112,34 @@ print(rot5_inverse(rot5("abcdefghijklmnopqrstuvwxyz")))
 print(rot5(rot5_inverse("liliane")))
 
 
-def caesar(n, string):
-    retstring = ""
-    for i in string:
-        index = alfabet.index(i)
-        retstring += alfabet[(index + n) % 26]
-    return retstring
+def caesar(n, text):
+    resultText = ""
+    for symbol in text:
+        if symbol in alfabet:
+            index = alfabet.index(symbol)
+            resultText += alfabet[(index + n) % 26]
+        else:
+            resultText += symbol
+    return resultText
 
 
 print(caesar(13, alfabet))
+print(caesar(3, "alle 3 zijn er bij @feest"))
+
+
+# rot13() met leestekens
+def rot13_met_leestekens(text):
+    result = ""
+    for symbol in text:
+        if symbol in alfabet:
+            index = alfabet.index(symbol)
+            result += alfabet[(index + 13) % 26]
+        else:
+            result += symbol
+    return result
+
+
+print(rot13_met_leestekens("liliane gaat lekker!"))
 
 
 # print(opp_rechthoek(3, 4))
